@@ -1103,11 +1103,11 @@ tr:nth-child(even) {
 }
 .aside-block__item {
   border: 1px solid var(--background-black);
-  background-color: var(--background-70);
+  background-color: #111;
   border-radius: 12px
 }
 .aside-block__item[open] {
-  border-color: var(--background-grey)
+  border-color: var(--background-70)
 }
 .aside-block__title {
   display: flex;
