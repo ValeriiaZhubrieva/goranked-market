@@ -1145,7 +1145,9 @@ tr:nth-child(even) {
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px
+  gap: 12px;
+  overflow: hidden auto;
+  max-height: 320px
 }
 .aside-block__prices {
   display: grid;
