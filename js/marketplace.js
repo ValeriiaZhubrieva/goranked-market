@@ -366,11 +366,12 @@
         function toggleFilters(targetElement) {
             const isFilterBtn = targetElement.closest(".market__filter-btn");
             const isFilterArea = targetElement.closest(".aside-block__inner");
+            const isCloseFilterBtn = targetElement.closest(".aside-block__close");
             const filtersOpen = htmlElement.classList.contains("filters-open");
             if (isFilterBtn) {
                 htmlElement.classList.toggle("filters-open");
                 updateLockClass();
-            } else if (!isFilterArea && filtersOpen) {
+            } else if ((!isFilterArea && filtersOpen) || isCloseFilterBtn) {
                 htmlElement.classList.remove("filters-open");
                 updateLockClass();
             }

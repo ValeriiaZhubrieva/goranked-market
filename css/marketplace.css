@@ -460,7 +460,13 @@ tr:nth-child(even) {
   padding: 16px 12px;
   background-color: #111;
   font-weight: 600;
-  font-size: 18px
+  font-size: 18px;
+}
+.account-card__title span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden
 }
 .account-card__buying {
   padding: 16px 12px;
@@ -1092,9 +1098,12 @@ tr:nth-child(even) {
   flex-direction: column;
   gap: 10px
 }
+.aside-block__bottom {
+  display: none;
+}
 .aside-block__item {
   border: 1px solid var(--background-black);
-  background-color: var(--background-black);
+  background-color: var(--background-70);
   border-radius: 12px
 }
 .aside-block__item[open] {
@@ -1378,7 +1387,8 @@ tr:nth-child(even) {
 .dark-btn,
 .gray-btn,
 .green-btn,
-.red-btn {
+.red-btn,
+.yellow-btn {
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
@@ -1406,7 +1416,9 @@ tr:nth-child(even) {
 .green-btn img,
 .green-btn svg,
 .red-btn img,
-.red-btn svg {
+.red-btn svg,
+.yellow-btn img,
+.yellow-btn svg {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
@@ -1428,6 +1440,11 @@ tr:nth-child(even) {
   background: var(--background-70);
   color: var(--text-white-color);
   transition: background .3s
+}
+.yellow-btn {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #111;
 }
 .empty-btn,
 .green-empty-btn,
@@ -1986,6 +2003,7 @@ tr:nth-child(even) {
 }
 .product-aside__seller-img {
   border-radius: 50%;
+  flex-shrink: 0;
   width: 36px;
   height: 36px;
   overflow: hidden;
@@ -2002,6 +2020,7 @@ tr:nth-child(even) {
   font-size: 18px
 }
 .product-aside__seller-checked {
+  flex-shrink: 0;
   width: 18px;
   height: 18px;
   display: grid;
@@ -2380,8 +2399,17 @@ tr:nth-child(even) {
   grid-area: password;
   transition: opacity .3s
 }
+.account-data__value-hidepass {
+  pointer-events: none;
+}
 .account-data__value-viewpass {
   opacity: 0
+}
+.account-data__value:hover .account-data__value-hidepass {
+  opacity: 0
+}
+.account-data__value:hover .account-data__value-viewpass {
+  opacity: 1
 }
 .account-data__copy {
   grid-area: copy;
@@ -2745,7 +2773,7 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 30px
+  padding: 15px 30px 30px 30px
 }
 .seller-info__head {
   display: flex;
@@ -3598,7 +3626,7 @@ tr:nth-child(even) {
   padding: 0 23px 23px 23px;
   border: 1px solid var(--background-70);
   border-radius: var(--border-radius);
-  background-color: var(--background-dark-grey);
+  background-color: #111;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -4028,11 +4056,13 @@ tr:nth-child(even) {
   gap: 16px
 }
 .status-info__item {
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--background-70);
   display: flex;
   flex-direction: column;
   gap: 12px
+}
+.status-info__item:not(:last-child) {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--background-70)
 }
 .status-info__title {
   font-weight: 700;
@@ -4094,6 +4124,9 @@ tr:nth-child(even) {
   }
   .items-row .account-card__title {
     grid-area: title
+  }
+  .items-row .account-card__title span {
+  -webkit-line-clamp: 3;
   }
   .items-row .account-card__buying {
     grid-area: buying;
@@ -4208,6 +4241,9 @@ tr:nth-child(even) {
   }
   .account-card__title {
     padding: 12px 12px 16px 0
+  }
+  .account-card__title span {
+  -webkit-line-clamp: 3;
   }
   .account-card__buying {
     grid-column: 1/-1
@@ -4372,6 +4408,9 @@ tr:nth-child(even) {
   }
 }
 @media (max-width:61.99875em) {
+  .wrapper {
+    background-size: auto
+  }
   .market__body {
     grid-template-columns: 1fr;
     position: relative
@@ -4486,7 +4525,7 @@ tr:nth-child(even) {
     transition: opacity .3s,visibility .3s,bottom 0s
   }
   .sort-block__inner {
-    background-color: var(--background-70);
+    background-color: #111;
     border-radius: 20px 20px 0 0;
     overflow: hidden;
     padding-top: 8px;
@@ -4512,12 +4551,12 @@ tr:nth-child(even) {
     transform: translate(0,0)
   }
   .sort-block__title {
-    padding: 0 10px;
+    padding: 0 10px 8px 10px;
     background-color: transparent
   }
   .sort-block__options {
     height: 100%;
-    padding: 16px;
+    padding: 8px 16px 16px 16px;
     max-height: 305px
   }
   .review-item {
@@ -4571,7 +4610,7 @@ tr:nth-child(even) {
     transform: rotateX(0);
     border-radius: 0;
     border: none;
-    background-color: rgba(16,16,16,.7);
+    background-color: rgba(0,0,0,.8);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -4602,7 +4641,29 @@ tr:nth-child(even) {
   .aside-block__items {
     max-height: 100%;
     overflow: hidden auto;
-    padding: 0 12px 12px 12px
+    padding: 0 12px
+  }
+  .aside-block__bottom {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 8px 12px;
+    margin: 0 -12px;
+    background-color: #111
+  }
+  .aside-block__bottom .aside-block__btn {
+    flex: 1 1 auto;
+    max-width: none;
+    width: calc(50% - 12px);
+    min-width: 150px;
+    padding: 6px 15px;
+    min-height: 40px;
+    font-size: 14px;
+    border-radius: 12px
   }
   .product {
     padding: 85px 0 32px 0
@@ -4759,6 +4820,9 @@ tr:nth-child(even) {
   .product-aside__pay-block {
     padding: 16px
   }
+  .product-aside__seller {
+    flex-wrap: wrap;
+  }
   .product-dialog__head {
     padding: 16px
   }
@@ -4795,7 +4859,7 @@ tr:nth-child(even) {
     gap: 8px
   }
   .seller-info {
-    padding: 24px 16px
+    padding: 10px 16px 24px 16px
   }
   .client-profile__block-head {
     padding: 12px 16px
@@ -4935,12 +4999,6 @@ tr:nth-child(even) {
   }
   .product-dialog__send:hover {
     opacity: .7
-  }
-  .account-data__value:hover .account-data__value-hidepass {
-    opacity: 0
-  }
-  .account-data__value:hover .account-data__value-viewpass {
-    opacity: 1
   }
   .account-data__copy:hover path {
     fill: var(--text-white-color)

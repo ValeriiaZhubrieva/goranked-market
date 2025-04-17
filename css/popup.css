@@ -31,7 +31,7 @@ body::after {
 .popup_show {
   z-index: 150;
   visibility: visible;
-  overflow: auto;
+  overflow: hidden;
   pointer-events: auto
 }
 .popup_show .popup__content {
@@ -47,7 +47,7 @@ body::after {
   width: 100%;
   justify-content: center;
   padding: 0;
-  height: auto;
+  height: 100%;
   align-items: center
 }
 .popup__content {
@@ -59,9 +59,10 @@ body::after {
   transition: transform .3s ease 0s,-webkit-transform .3s ease 0s;
   border: 1px solid var(--background-70);
   background-color: #111;
-  overflow: visible;
   width: 100%;
   flex-grow: 0;
+  display: flex;
+  flex-direction: column;
   max-width: 560px
 }
 .lock .popup__content {
@@ -128,6 +129,7 @@ body::after {
 .popup__body {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   padding: 24px;
+  overflow: hidden auto;
   display: flex;
   flex-direction: column;
   gap: 32px
@@ -186,9 +188,52 @@ body::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent
 }
+.popup .form-block__btns {
+  position: sticky;
+  bottom: -25px;
+  z-index: 5;
+  background-color: #111;
+  padding: 12px 0;
+  margin: 0 -1px;
+  transition: bottom 0.3s
+}
+.popup .seller-info__head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: #111;
+  padding: 15px 0 6px;
+  transition: top 0.3s
+}
+@media (min-width:47.99875em) {
+  .popup--right .popup__wrapper {
+    align-items: flex-end;
+    justify-content: stretch;
+    position: relative;
+    transition: right 0.3s;
+    right: -150%
+  }
+  .popup_show.popup--right .popup__wrapper {
+    right: 0
+  }
+  .popup--right .popup__content {
+    flex-grow: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1)
+  }
+  .popup--right .popup__body {
+    flex: 1 1 auto;
+  }
+  .popup--right .form-block {
+    flex: 1 1 auto;
+  }
+  .popup--right .form-block__btns {
+    margin-top: auto;
+  }
+}
 @media (max-width:29.99875em) {
   .popup {
-    padding: 30px 0 0 0
+    padding: 70px 0 0 0
   }
   .popup_show .popup__wrapper {
     bottom: 0
