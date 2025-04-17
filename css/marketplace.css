@@ -3510,9 +3510,15 @@ tr:nth-child(even) {
   display: grid;
   font-family: var(--title-font)
 }
+.order-table-no-orders .order-table__body {
+  min-height: 0;
+  overflow: hidden
+}
 .order-table__body {
   display: grid;
+  align-content: start;
   overflow: auto hidden;
+  min-height: 812px;
   border-radius: 20px 20px 0 0
 }
 .order-table__body::-webkit-scrollbar {
@@ -3799,8 +3805,14 @@ tr:nth-child(even) {
   display: grid;
   font-family: var(--title-font)
 }
+.ticket-table-no-ticket .ticket-table__body {
+  min-height: 0;
+  overflow: hidden
+}
 .ticket-table__body {
   display: grid;
+  align-content: start;
+  min-height: 812px;
   overflow: auto hidden;
   border-radius: 20px 20px 0 0
 }
@@ -4182,6 +4194,12 @@ tr:nth-child(even) {
     grid-template-columns: 1fr
   }
   .client-profile__content {
+    min-height: 638px
+  }
+  .order-table__body {
+    min-height: 638px
+  }
+  .ticket-table__body {
     min-height: 638px
   }
   .profile-aside {
